@@ -83,36 +83,6 @@ Bu uygulamayı çalıştırmak için aşağıdaki adımları takip edebilirsiniz
     cv2.destroyAllWindows()
     ```
 
-## Kodun Tamamı
-
-```python
-import cv2
-from mtcnn.mtcnn import MTCNN
-
-cap = cv2.VideoCapture(0)
-
-detector = MTCNN()
-
-while True:
-    # Kameradan bir kare al
-    ret, frame = cap.read()
-
-    faces = detector.detect_faces(frame)
-
-    for face in faces:
-        x, y, w, h = face['box']
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
-    cv2.imshow('Yüz Tanıma', frame)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-
-cap.release()
-cv2.destroyAllWindows()
-```
-
 ## Kullanım
 
 1. Kameranızı başlatın.
